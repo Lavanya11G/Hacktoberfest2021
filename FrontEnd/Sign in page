@@ -16,7 +16,7 @@
       <input class="pass" type="password" align="center" placeholder="Password">
       <a class="submit" align="center">Sign in</a>
       <p class="forgot" align="center"><a href="#">Forgot Password?</p>
-            
+       
                 
     </div>
      
