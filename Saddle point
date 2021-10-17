@@ -1,0 +1,113 @@
+#include <iostream>
+using namespace std;
+class saddlemat
+{
+    int mat[10]
+           [10],
+        i, j, row, col, min, max;
+
+public:
+    saddlemat()
+    {
+        i = j = row = col = 0;
+        min = max = 0;
+    }
+    void getdata();
+    void showmat();
+    void saddlepoint();
+};
+void saddlemat::getdata()
+{
+    cout << "\n Enter How many Rows in matrix : ";
+                     cin >>
+        row;
+    cout << "\n Enter How many cols in matrix : ";
+                     cin >>
+        col;
+    for (i = 0; i < row; i++)
+    {
+        for (j = 0; j < col; j++)
+        {
+            cout << "\nEnter matrix mat["<<i<<"]["<<j<<"] element : ";
+            cin >>mat[i][j];
+        }
+    }
+}    
+    void saddlemat :: showmat()
+    {
+        cout << "\nThe Elements inside the matrix are as follows...\n\n ";
+            for (i = 0; i < row; i++)
+        {
+            for (j = 0; j < col; j++)
+            {
+                cout << "\t" << mat[i][j];
+            }
+            cout << "\n";
+        }
+        cout << "\n";
+    }
+    void saddlemat::saddlepoint() 
+    {
+        int greatest[5], smallest[5];
+        for (i = 0; i < 5; i++)
+        {
+            greatest[i] = smallest[i] = 0;
+        }
+        for (i = 0; i < row; i++)
+        {
+            smallest[i] = mat[i][0];
+            for (j = 0; j < col; j++)
+            {
+                if (mat[i][j] <= smallest[i])
+                {
+                    smallest[i] = mat[i][j];
+                }
+            }
+        }
+        for (j = 0; j < col; j++)
+            {
+                greatest[j] = mat[0][j];
+                for (i = 0; i < row; i++)
+
+                {
+                    if (mat[i][j] >= greatest[j])
+
+                    {
+                        greatest[j] = mat[i][j];
+                    }
+                }
+            }
+        max = smallest[0];
+        for(i = 0; i < row; i++)
+        {
+            if (smallest[i] >= max)
+
+            {
+                max = smallest[i];
+            }
+        }
+        min = greatest[0];
+        for (j = 0; j < col; j++)
+        {
+            if (greatest[j] <= min)
+            {
+                min = greatest[j];
+            }
+        }
+        if (min == max)
+        {
+            cout << "\nSaddle point " << min << " is present in the array\n\n ";
+        }
+        else
+        {
+            cout << "\nSaddle point is not present in given matrix...\n\n ";
+        }
+    }    
+        int main()
+        {
+            saddlemat s1;
+            s1.getdata();
+            s1.showmat();
+            s1.saddlepoint();
+            return 0;
+        }
